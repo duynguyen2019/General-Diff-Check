@@ -58,8 +58,8 @@ def Input_dataframes(df1,df2,mergingcolumns):
         if colname not in mergingcolumns:
             merged[str(colname) + " Check"] = merged.apply(lambda x: (x[str(colname) + '_1'] == x[str(colname) + '_2']) | ((pd.isna(x[str(colname) + '_1'])) & (pd.isna(x[str(colname) + '_2']))), axis=1)
             
-            
-            #writer = pd.ExcelWriter('P:\PartTimers\DuyNguyen\Projects\GeneralDiffCheck\Checkforfishbiomass.xlsx', engine = 'xlsxwriter')
+            merged.to_csv('P:\PartTimers\DuyNguyen\Python Practice\pythonpractice\Test.csv')
+            #writer = pd.ExcelWriter('P:\PartTimers\DuyNguyen\Projects\GeneralDiffCheck\Justtosee', engine = 'xlsxwriter')
             #merged.to_excel(writer, sheet_name = 'Check for mismatched values')
             #In1notIn2.to_excel(writer, sheet_name = 'In Set 1 not in Set 2 list')
             #In2notIn1.to_excel(writer, sheet_name = 'In Set 2 not in Set 1 list')
@@ -68,13 +68,13 @@ def Input_dataframes(df1,df2,mergingcolumns):
             #writer.save()
             #writer.close()    
             
-        
+    return(merged)
             #merged.to_excel('P:\PartTimers\DuyNguyen\Python Practice\pythonpractice\GeneralDiffCheck.xlsx')
             #print("This is the table where we show which values are mismatched")
             
     #merged.to_excel('P:\PartTimers\DuyNguyen\Python Practice\pythonpractice\SOmethingtosee.xlsx')
 
-Input_dataframes(df1,df2,['stationid','sampledate','trawlnumber'])
+merged = Input_dataframes(df1,df2,['stationid','sampledate','trawlnumber','fishspecies','samplingorganization','sizeclass','anomaly','Comments'])
 #    r = 'red'
  #   g = 'gray'
 
